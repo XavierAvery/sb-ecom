@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Ignore junkFolder (to exclude images, sample data, etc.)
 junkFolder/
 
 ### STS ###
