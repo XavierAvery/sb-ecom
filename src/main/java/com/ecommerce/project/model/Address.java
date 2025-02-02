@@ -6,10 +6,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "addresses")
@@ -44,12 +40,12 @@ public class Address {
     private String country;
 
     @NotBlank
-    @Size(min = 6, message = "Zipcode name must be at least 6 characters")
-    private String zipcode; // X_NOTE: Pincode used in some cases
+    @Size(min = 5, message = "Zipcode name must be at least 5 characters")
+    private String zipcode; // NOTE: Pincode used in some cases
 
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "addresses")
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Address(String street, String buildingName, String city, String state, String country, String zipcode) {
         this.street = street;
