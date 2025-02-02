@@ -6,6 +6,8 @@ target/
 
 # Ignore junkFolder (to exclude images, sample data, etc.)
 junkFolder/
+.env
+src/main/resources/application-local.properties
 
 ### STS ###
 .apt_generated
