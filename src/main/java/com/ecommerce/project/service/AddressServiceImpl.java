@@ -1,5 +1,6 @@
 package com.ecommerce.project.service;
 
+import com.ecommerce.project.exceptions.APIException;
 import com.ecommerce.project.model.Address;
 import com.ecommerce.project.model.User;
 import com.ecommerce.project.payload.AddressDTO;
@@ -32,4 +33,21 @@ public class AddressServiceImpl implements AddressService {
 
         return modelMapper.map(savedAddress, AddressDTO.class);
     }
+
+    @Override
+    public List<AddressDTO> getAllAddresses() {
+
+        List<Address> addresses = addressRepository.findAll();
+
+        if (addresses.isEmpty()) {
+            throw new APIException("No addresses exists");
+        }
+
+        // Convert List<Address> to List<AddressDTO> and returns addressDTOs
+        return addresses.stream()
+                .map(address -> modelMapper.map(address, AddressDTO.class))
+                .toList();
+    }
+
+
 }

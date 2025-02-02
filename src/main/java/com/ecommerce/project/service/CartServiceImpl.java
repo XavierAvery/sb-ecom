@@ -100,7 +100,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<CartDTO> getAllCarts() {  // X_NOTE: Come back and study this method
+    public List<CartDTO> getAllCarts() {
         List<Cart> carts = cartRepository.findAll();
 
         if (carts.size() == 0) {
